@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DREAMS BUILDER ADIN CORP</title>
   <style>
-    body {
+ 
+ body {
       margin: 0;
       padding: 0;
       font-family: 'Montserrat', sans-serif;
@@ -110,7 +111,7 @@
     .empresa {
       grid-column: 1 / -1;
       display: flex;
-      align-items: center;   /* centra verticalmente */
+      align-items: center;
       justify-content: space-between;
       gap: 40px;
       padding: 60px 40px;
@@ -124,22 +125,23 @@
 
     .empresa-texto h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 3em; /* ~30% grande */
+      font-size: 3em;
       color: #800020;
       margin-bottom: 20px;
     }
 
     .empresa-texto p {
-      font-size: 1.5em; /* ~15% grande */
+      font-size: 1.5em;
       line-height: 1.6;
       margin-bottom: 10px;
+      word-wrap: break-word;   /* Ajusta palabras largas */
     }
 
     .empresa-logo {
       flex: 1;
       display: flex;
-      justify-content: center; /* centra horizontalmente */
-      align-items: center;     /* centra verticalmente */
+      justify-content: center;
+      align-items: center;
     }
 
     .empresa-logo img {
@@ -248,6 +250,16 @@
       .empresa {
         flex-direction: column;
         text-align: center;
+        padding: 30px 20px;
+      }
+
+      .empresa-texto h2 {
+        font-size: 2em;   /* Reduce título */
+      }
+
+      .empresa-texto p {
+        font-size: 1em;   /* Texto más pequeño en móvil */
+        line-height: 1.4;
       }
 
       .empresa-logo img {
@@ -255,6 +267,17 @@
         margin-top: 20px;
       }
     }
+
+    /* Pantallas muy pequeñas (<480px) */
+    @media (max-width: 480px) {
+      .empresa-texto h2 {
+        font-size: 1.5em;
+      }
+      .empresa-texto p {
+        font-size: 0.9em;
+      }
+    }
+
   </style>
 </head>
 <body>
