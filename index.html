@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DREAMS BUILDER ADIN CORP</title>
+  <style>
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: #FDFDF3;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: auto; /* cada fila se ajusta al contenido */
+  gap: 8px;
+  min-height: 100vh;
+  padding-top: 100px; /* compensa la altura de la barra fija */
+}
+
+.parent > div {
+  padding: 20px;
+  font-weight: bold;
+}
+
+/* Barra superior fija */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px; /* altura total de la barra */
+  background: #FDFDF3;
+  border-bottom: 2px solid #f57c00;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  z-index: 1000;
+}
+
+/* Logo + nombre */
+.div1 {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.div1 img {
+  height: 100px;
+}
+
+.div1 span {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #800020;
+  text-transform: uppercase;
+}
+
+/* Menú */
+.div2 {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.div2 nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 50px;
+}
+
+.div2 nav a {
+  text-decoration: none;
+  color: #800020;
+  font-weight: 900;
+  font-size: 1em;
+}
+
+/* Hero debajo del logo y menú */
+.div3 {
+  grid-column: 1 / -1;
+  background: linear-gradient(
+                to left,
+                rgba(255,255,255,0.9),
+                rgba(255,255,255,0.0)
+              ),
+              url("imgdelindex/1.jpg") center/cover no-repeat;
+  color: #800020;
+  padding: 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  text-align: right;
+  margin-top: 0;
+  min-height: 630px;
+}
+
+.div3 h1,
+.div3 p {
+  color: #800020;
+}
+
+.div3 h1 {
+  font-size: 2.5em;
+  margin: 0;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+}
+
+.div3 p {
+  font-size: 1.1em;
+  margin-top: 10px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+/* Nuevo bloque entre div3 y div10 */
+.div9-5 {
+  grid-column: 1 / -1;
+  background:#fdfdf3;
+  padding:40px;
+  text-align:center;
+  min-height: 300px;
+  margin-right: 6%;
+  margin-left: 6%;
+}
+
+/* Sección 20 */
+.div20 {
+  grid-column: 1 / -1;
+  min-height: 300px;
+  margin-left: 10%;
+  margin-right: 10%;
+  background: #FDFDF3;
+}
+
+/* Sección 21 */
+.div21 {
+  grid-column: 1 / -1;
+  min-height: 100px;
+}
+
+/* Botón proyectos */
+.btn-proyectos {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #f57c00;
+  color: white;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1em;
+  transition: background 0.3s ease;
+}
+
+.btn-proyectos:hover {
+  background: #e66a00;
+}
+
+.btn-proyectos .icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  color: #f57c00;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+/* Grid interno */
+.parent-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(7, auto);
+  gap: 8px;
+  padding:20px;
+}
+
+/* Interior1: Imagen */
+.parent-inner .interior1 {
+  grid-column: span 2 / span 2;
+  grid-row: span 2 / span 2;
+  background:url('imgdelindex/2.jpg') center/cover no-repeat;
+  border-radius:30%;
+  margin-left:15%;
+  margin-right:5%;
+  height: 70%;
+  margin-top: 10%;
+}
+
+/* Interior2: Construcción */
+.parent-inner .interior2 {
+  grid-column: span 2 / span 2;
+  grid-column-start: 3;
+  height: 30%px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+/* Interior3: Misión */
+.parent-inner .interior3 {
+  grid-column-start: 3;
+  grid-row-start: 2;
+  height: 250px;
+  margin-top: 5%;
+  margin-left: 7%;
+  margin-right: 7%;
+}
+
+/* Interior4: Equipo */
+.parent-inner .interior4 {
+  grid-column-start: 4;
+  grid-row-start: 2;
+  height: 250px;
+  margin-top: 5%;
+  margin-left: 7%;
+  margin-right: 7%;
+}
+
+/* Interior5: Nuestros Proyectos */
+.parent-inner .interior5 {
+  grid-column: span 4 / span 4;
+  grid-row-start: 3;
+  height: 20%px;
+}
+
+/* Interior6: Imagen */
+.parent-inner .interior6 {
+  grid-row-start: 4;
+  background:url('imgdelindex/3.png') center/cover no-repeat;
+  height: 250px;
+  margin-top: 9%;
+}
+
+/* Interior7: Imagen */
+.parent-inner .interior7 {
+  grid-row-start: 4;
+  background:url('imgdelindex/4.png') center/cover no-repeat;
+  height: 250px;
+  margin-top: 9%;
+}
+
+/* Interior8: Imagen */
+.parent-inner .interior8 {
+  grid-row-start: 4;
+  background:url('imagen14.jpg') center/cover no-repeat;
+  height: 250px;
+  margin-top: 9%;
+}
+
+/* Interior9: Imagen */
+.parent-inner .interior9 {
+  grid-row-start: 4;
+  background:url('imagen15.jpg') center/cover no-repeat;
+  height: 250px;
+  margin-top: 9%;
+}
+
+/* Interior10: Botón Proyectos */
+.parent-inner .interior10 {
+  grid-column: span 4 / span 4;
+  grid-row-start: 5;
+  text-align:center;
+  height: 100px;
+  margin-top: 5%;
+}
+
+/* Interior11: Imagen Sección 18 */
+.parent-inner .interior11 {
+  grid-column-start: 2;
+  grid-row-start: 6;
+  height: 330px;
+}
+
+/* Interior12: Texto Sección 19 */
+.parent-inner .interior12 {
+  grid-column: span 3 / span 4;
+  grid-row-start: 6;
+  text-align:left;
+  height: 300px;
+  margin-left: 7%;
+  margin-right: 30%;
+}
+
+/* Estilos generales */
+#menu-toggle {
+  position: absolute;
+  opacity: 0;       /* invisible */
+  pointer-events: none; /* no se puede clicar directamente */
+}
+
+.menu-icon {
+  display: none;    /* oculto en desktop */
+}
+
+/* --- SOLO EN PANTALLAS PEQUEÑAS --- */
+@media (max-width: 800px) {
+
+  /* Grid interno */
+  .parent-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 20px;
+    justify-items: center;
+  }
+
+  .parent-inner > div {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+    width: 80%;
+    margin: 0 auto;
+    height: auto !important;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  /* Ajustes para imágenes */
+  .parent-inner .interior1,
+  .parent-inner .interior6,
+  .parent-inner .interior7,
+  .parent-inner .interior8,
+  .parent-inner .interior9,
+  .parent-inner .interior11 {
+    background-size: cover !important;
+    background-position: center !important;
+    border-radius: 10px !important;
+    min-height: 200px !important;
+    margin: 0 auto !important;
+    width: 80% !important;
+  }
+
+  /* Textos y botones centrados */
+  .parent-inner .interior2,
+  .parent-inner .interior3,
+  .parent-inner .interior4,
+  .parent-inner .interior5,
+  .parent-inner .interior10,
+  .parent-inner .interior12 {
+    text-align: center !important;
+    margin: 0 auto !important;
+    width: 80% !important;
+  }
+
+  /* Hero y sección final ocupan 100% */
+  .div3,
+  .div21 {
+    width: 100% !important;
+    margin: 0 !important;
+    grid-column: 1 / -1 !important;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  /* Bloque div20 centrado al 80% */
+  .div20 {
+    width: 80% !important;
+    margin: 0 auto !important;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  /* Pasos internos de div20 apilados */
+  .div20 > div {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+
+  .div20 > div > div {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Hamburguesa con CSS */
+  #menu-toggle {
+    display: none; /* ocultar checkbox */
+  }
+
+  /* Label ocupa todo el ancho de la barra */
+      .menu-icon {
+        display: block;
+        font-size: 2em;
+        color: #800020;
+        cursor: pointer;
+        padding: 8px 12px;
+        background: #fff;
+        border-radius: 5px;
+        z-index: 1100;
+      }
+
+  .div2 nav ul {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    background: #FDFDF3;
+    border-top: 2px solid #f57c00;
+    position: absolute;
+    top: 100px;   /* debajo de la barra */
+    right: 0;
+    width: 70%;   /* ancho del menú desplegado */
+    z-index: 1200;
+  }
+
+  #menu-toggle:checked ~ nav ul {
+    display: flex;
+  }
+
+  /* Overlay para cerrar al hacer clic fuera */
+  #menu-toggle:checked ~ .overlay {
+    display: block;
+  }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.2);
+    z-index: 1000;
+  }
+
+  /* Autoajuste de elementos dentro de div21 */
+  .div21 * {
+    max-width: 100% !important;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    text-align: center;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Barra superior fija -->
+  <header class="top-bar">
+    <div class="div1">
+      <img src="imgdelindex/logo.jpg" alt="Logo Dreams Builder">
+      <span>DREAMS BUILDER ADIN CORP</span>
+    </div>
+<div class="div2">
+  <!-- Checkbox oculto -->
+  <input type="checkbox" id="menu-toggle" />
+  <!-- Label hamburguesa -->
+  <label for="menu-toggle" class="menu-icon" style="margin-right: 20px;">&#9776;</label>
+
+  <!-- Overlay para cerrar al hacer clic fuera -->
+  <label for="menu-toggle" class="overlay"></label>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="servicos.html">Servicios</a></li>
+      <li><a href="contactos.html">Contacto</a></li>
+    </ul>
+  </nav>
+</div>
+
+  </header>
+
+  <!-- Contenedor principal -->
+  <div class="parent">
+     <!-- Hero Imagen -->
+    <div class="div3">
+      <h1>Construcción de Calidad y Confianza</h1>
+      <p>Proyectos comerciales, retail e industriales</p>
+    </div>
+<!-- Nuevo bloque entre div3 y div10 -->
+<div class="div9-5">
+  <!-- Grid interno con clases renombradas -->
+  <div class="parent-inner">
+    <!-- interior1 con imagen -->
+    <div class="interior1" style="background:url('imgdelindex/2.jpg') center/cover no-repeat; color:white; border-radius:30%; margin-left:15%; margin-right:5%;">
+      <!-- Imagen de referencia, puedes cambiar la ruta -->
+    </div>
+
+    <!-- interior2: Construcción -->
+    <div class="interior2">
+      <h2>Construcción de Calidad y Confianza</h2>
+      <p>DREAMS BUILDER ADIN CORP nace con el objetivo de ofrecer servicios de construcción confiables y bien ejecutados, enfocados principalmente en el sector comercial, retail e industrial.</p>
+      <p>Nuestro equipo está conformado por profesionales con experiencia en obra civil, instalaciones, acabados y coordinación de proyectos, lo que nos permite atender obras de distinta complejidad bajo un mismo estándar de calidad.</p>
+      <p>Nos distinguimos por nuestro control de obra, orden administrativo y compromiso con los tiempos de entrega, entendiendo que cada proyecto impacta directamente en la operación y rentabilidad de nuestros clientes.</p>
+    </div>
+
+    <!-- interior3: Misión -->
+    <div class="interior3">
+      <h2>Misión</h2>
+      <p>DREAMS BUILDER ADIN CORP, nos dedicamos a proporcionar soluciones de construcción de alta calidad. Nuestra misión es satisfacer las necesidades de nuestros clientes con integridad e innovación.</p>
+    </div>
+
+    <!-- interior4: Equipo -->
+    <div class="interior4">
+      <h2>Equipo</h2>
+      <p>Contamos con un equipo de profesionales altamente capacitados en el sector de la construcción. En DREAMS BUILDER ADIN CORP, cada miembro aporta experiencia y dedicación para garantizar el éxito de cada proyecto.</p>
+    </div>
+
+    <!-- interior5: Nuestros Proyectos -->
+    <div class="interior5">
+      <h1 style="font-size:2.5em; margin:0; color:#1f2a44;">Nuestros Proyectos</h1>
+    </div>
+
+    <!-- interior6: Imagen -->
+    <div class="interior6" style="background:url('imgservicio/en.png') center/cover no-repeat; color:white;border-radius:30%; margin-left:15%; margin-right:5%;">
+      <!-- Imagen de referencia -->
+    </div>
+
+    <!-- interior7: Imagen -->
+    <div class="interior7" style="background:url('imgservicio/pi.png') center/cover no-repeat; color:white; border-radius:30%; margin-left:15%; margin-right:5%;">
+      <!-- Imagen de referencia -->
+    </div>
+
+    <!-- interior8: Imagen -->
+    <div class="interior8" style="background:url('imgservicio/car.jpg') center/cover no-repeat; color:white; border-radius:30%; margin-left:15%; margin-right:5%;">
+      <!-- Imagen de referencia -->
+    </div>
+
+    <!-- interior9: Imagen -->
+    <div class="interior9" style="background:url('imgservicio/cib.jpg') center/cover no-repeat; color:white; border-radius:30%; margin-left:15%; margin-right:5%;">
+      <!-- Imagen de referencia -->
+    </div>
+
+    <!-- interior10: Botón Proyectos -->
+    <div class="interior10">
+    <a href="servicos.html" class="btn-proyectos">
+        Ver Todos Nuestros Proyectos
+        <span class="icon">➜</span>
+    </a>
+    </div>
+    <!-- interior11: Imagen (Sección 18) -->
+    <div class="interior11" style="background:url('imgdelindex/3.jpg') center/cover no-repeat; color:white; border-radius:30%; margin-left:3%; margin-right:3%">
+      <!-- Imagen de referencia -->
+    </div>
+
+    <!-- interior12: Texto (Sección 19) -->
+    <div class="interior12" style="text-align:left; font-weight:normal; ">
+      <h2 style="color:#1f2a44;">Un equipo que prioriza control, claridad y resultados</h2>
+      <p>Nos diferenciamos por nuestra especialización en retail/comercial y por un modelo de ejecución basado en planeación, control y comunicación directa.</p>
+      <ul style="margin-left:20px;">
+        <li>Planeación y control de obra rigurosos para reducir desviaciones.</li>
+        <li>Comunicación directa y transparente durante todo el proceso.</li>
+        <li>Atención al detalle y calidad ejecutiva en cada partida.</li>
+        <li>Filosofía basada en confianza, transparencia y excelencia constructiva.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<div class="div20" 
+     style="padding:40px; text-align:center; width:80%; margin:0 auto; box-sizing:border-box;">
+  <h2 style="color:#1f2a44; font-size:2em; margin-bottom:20px;">¿Cómo trabajamos?</h2>
+  <p style="margin-bottom:30px; font-size:1.1em; color:#333;">
+    Nuestro proceso está diseñado para dar visibilidad del avance, control de calidad y una ejecución ordenada.
+  </p>
+
+  <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap:20px;">
+    <!-- Paso 1 -->
+    <div style="width:100%; margin:0 auto;">
+      <div style="font-size:2em; font-weight:bold; color:#f57c00;">1</div>
+      <p style="margin:5px 0; font-weight:bold;">Diagnóstico</p>
+      <div style="background:url('imgdelindex/d.jpg') center/cover no-repeat; height:120px; border-radius:8px;"></div>
+    </div>
+
+    <!-- Paso 2 -->
+    <div style="width:100%; margin:0 auto;">
+      <div style="font-size:2em; font-weight:bold; color:#f57c00;">2</div>
+      <p style="margin:5px 0; font-weight:bold;">Propuesta</p>
+      <div style="background:url('imgdelindex/p.png') center/cover no-repeat; height:120px; border-radius:8px;"></div>
+    </div>
+
+    <!-- Paso 3 -->
+    <div style="width:100%; margin:0 auto;">
+      <div style="font-size:2em; font-weight:bold; color:#f57c00;">3</div>
+      <p style="margin:5px 0; font-weight:bold;">Planeación</p>
+      <div style="background:url('imgdelindex/p.png') center/cover no-repeat; height:120px; border-radius:8px;"></div>
+    </div>
+
+    <!-- Paso 4 -->
+    <div style="width:100%; margin:0 auto;">
+      <div style="font-size:2em; font-weight:bold; color:#f57c00;">4</div>
+      <p style="margin:5px 0; font-weight:bold;">Ejecución</p>
+      <div style="background:url('imgdelindex/e.jpg') center/cover no-repeat; height:120px; border-radius:8px;"></div>
+    </div>
+
+    <!-- Paso 5 -->
+    <div style="width:100%; margin:0 auto;">
+      <div style="font-size:2em; font-weight:bold; color:#f57c00;">5</div>
+      <p style="margin:5px 0; font-weight:bold;">Entrega</p>
+      <div style="background:url('imgdelindex/ee.jpeg') center/cover no-repeat; height:120px; border-radius:8px;"></div>
+    </div>
+  </div>
+</div>
+
+    <!-- Sección 21: Copyright -->
+    <div class="div21" style="background:#1f2a44; color:white; text-align:center; padding:20px; font-size:0.9em;">
+      © 2026 DREAMS BUILDER ADIN CORP. Todos los derechos reservados.
+    </div>
+  </div> <!-- cierre del contenedor .parent -->
+
+</body>
+</html>
