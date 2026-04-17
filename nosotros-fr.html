@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DREAMS BUILDER ADIN CORP</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #FDFDF3;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: auto;
+      gap: 8px;
+      padding-top: 100px;
+    }
+
+    /* Barra superior fija */
+    header.top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: #FDFDF3;
+      border-bottom: 2px solid #f57c00;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 15px;
+      z-index: 1000;
+    }
+
+    /* Logo */
+    .logo {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .logo img {
+      height: 80px;
+    }
+
+    .logo span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #800020;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    /* Menú */
+    .menu {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .menu nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 30px;
+    }
+
+    .menu nav a {
+      text-decoration: none;
+      color: #800020;
+      font-weight: 900;
+      font-size: 1em;
+    }
+
+    /* Hero */
+    .hero {
+      grid-column: 1 / -1;
+      background: linear-gradient(
+                    to left,
+                    rgba(255,255,255,0.9),
+                    rgba(255,255,255,0.0)
+                  ),
+                  url("imgdelindex/1.jpg") center/cover no-repeat;
+      color: #800020;
+      padding: 30px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      text-align: center;
+      min-height: 630px;
+    }
+
+    /* Sección Nuestra Historia */
+    .historia {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      padding: 60px 40px;
+      box-sizing: border-box;
+    }
+
+    .historia-img img {
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .historia-texto {
+      max-width: 600px;
+      color: #333;
+    }
+
+    .historia-texto h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2em;
+      color: #800020;
+      margin-bottom: 20px;
+    }
+
+    .historia-texto p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    /* Footer */
+    footer.footer {
+      background: #1f2a44;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+    }
+
+    /* Hamburguesa */
+    #menu-toggle {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .menu-icon {
+      display: none;
+    }
+
+    /* --- SOLO EN PANTALLAS PEQUEÑAS --- */
+    @media (max-width: 800px) {
+      main {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        align-items: center;
+      }
+
+      .logo { 
+        justify-content: center;
+        text-align: center;
+      }
+
+      .menu { text-align: center; }
+
+      .menu-icon {
+        display: block;
+        font-size: 2em;
+        color: #800020;
+        cursor: pointer;
+        padding: 8px 12px;
+        background: #fff;
+        border-radius: 5px;
+        z-index: 1100;
+      }
+
+      .menu nav ul {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+        background: #FDFDF3;
+        border-top: 2px solid #f57c00;
+        position: absolute;
+        top: 100px;
+        left: 40px;
+        width: 70%;
+        z-index: 1200;
+        padding: 0;
+        margin: 0;
+      }
+
+      .menu nav ul li {
+        flex: 1;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        padding: 15px 0;
+        box-sizing: border-box;
+      }
+
+      .menu nav a {
+        display: block;
+        width: 100%;
+        color: #800020;
+        font-weight: 900;
+        font-size: 1em;
+        text-decoration: none;
+      }
+
+      #menu-toggle:checked ~ nav ul {
+        display: flex;
+      }
+
+      #menu-toggle:checked ~ .overlay {
+        display: block;
+      }
+
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.2);
+        z-index: 1000;
+      }
+
+      /* Historia responsiva */
+      .historia {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .historia-img img {
+        max-width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="logo">
+      <img src="imgdelindex/logo.jpg" alt="Logo Dreams Builder">
+      <span>DREAMS BUILDER ADIN CORP</span>
+    </div>
+    <div class="menu" style="margin-right: 20px;">
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+      <label for="menu-toggle" class="overlay"></label>
+      <nav>
+        <ul>
+          <li><a href="index-fr.html">Accueil</a></li>
+          <li><a href="nosotros-fr.html">À Propos</a></li>
+          <li><a href="servicos-fr.html">Services</a></li>
+          <li><a href="contactos-fr.html">Contact</a></li>
+          <li>
+            <select class="lang-select-nav" onchange="location = this.value;" style="border: 1px solid #800020; border-radius: 5px; color: #800020; font-weight: bold; background: transparent; padding: 2px 5px; cursor: pointer;">
+              <option value="nosotros-fr.html" selected>Français 🇫🇷</option>
+              <option value="nosotros-es.html">Español 🇲🇽</option>
+              <option value="nosotros-en.html">English 🇨🇦</option>
+            </select>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero" id="inicio">
+      <h1>Construction de Qualité et de Confiance</h1>
+      <p>Projets commerciaux, de vente au détail et industriels</p>
+    </div>
+
+    <section class="historia" id="nosotros">
+      <div class="historia-img">
+        <img src="imgservicio/car.jpg" alt="Fondateur Adin Méndez">
+      </div>
+      <div class="historia-texto">
+        <h2>Notre Histoire</h2>
+        <p>Tout a commencé par un rêve. Adin Méndez, notre fondateur, a entrepris un voyage du Mexique au Canada, emportant avec lui sa passion pour la construction et le désir d'offrir des services de qualité honorant ses racines.</p>
+        <p>Avec effort et dévouement, il a transformé ce rêve en une mission : créer des espaces qui transmettent confiance, chaleur et excellence. Chaque projet reflète non seulement la technique et la précision, mais aussi l'essence d'un parcours qui unit les cultures et les cœurs.</p>
+        <p>Aujourd'hui, nous continuons à construire avec le même esprit qui a inspiré Adin : fournir des solutions solides et humaines, en apportant un morceau du Mexique à chaque chantier au Canada.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © 2026 DREAMS BUILDER ADIN CORP. Tous droits réservés.
+  </footer>
+
+</body>
+</html>

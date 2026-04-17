@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DREAMS BUILDER ADIN CORP</title>
+  <style>
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #FDFDF3;
+      display: flex; flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header.top-bar {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100px;
+      background: #FDFDF3;
+      border-bottom: 2px solid #f57c00;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 15px; z-index: 1000;
+    }
+    .logo { display: flex; justify-content: center; align-items: center; gap: 10px; }
+    .logo img { height: 80px; }
+    .logo span { font-family: 'Playfair Display', serif; font-size: 1.5em; font-weight: bold; color: #800020; text-transform: uppercase; }
+    .menu { display: flex; align-items: center; }
+    .menu nav ul { list-style: none; display: flex; gap: 15px; margin: 0; padding: 30px; }
+    .menu nav a { text-decoration: none; color: #800020; font-weight: 900; font-size: 1em; }
+    #menu-toggle { position: absolute; opacity: 0; pointer-events: none; }
+    .menu-icon { display: none; }
+
+    /* Hero */
+    .hero {
+      margin-top: 100px;
+      background: linear-gradient(to left, rgba(255,255,255,0.9), rgba(255,255,255,0.0)),
+                  url("imgdelindex/1.jpg") center/cover no-repeat;
+      color: #800020; padding: 30px;
+      display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+      text-align: center; min-height: 630px;
+      margin-bottom: 0;
+
+    }
+
+    /* Contenido */
+    .parent {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      grid-column-gap: 0px; grid-row-gap: 15px;
+      padding: 20px;
+    }
+    .div1 { grid-area: 1 / 2 / 3 / 3; }
+    .div2 { grid-area: 1 / 3 / 3 / 5; margin-left: 10%; margin-top: 10%;}
+    .div3 { grid-area: 2 / 4 / 4 / 5; margin-top: 30%;}
+    .div4 { grid-area: 2 / 2 / 4 / 4; margin-top: 30%;}
+    .div5 { grid-area: 3 / 2 / 5 / 3; }
+    .div6 { grid-area: 3 / 3 / 5 / 5; }
+    .div7 { grid-area: 4 / 4 / 6 / 5; }
+    .div8 { grid-area: 4 / 2 / 6 / 4; }
+    .parent img { width: 100%; height: auto; border: 2px solid #ccc; }
+
+    /* Botones en rojo */
+    button {
+      margin: 5px; padding: 8px 12px;
+      background: #800020; color: white;
+      border: none; cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    button:hover { background: #a00028; }
+
+    /* Footer */
+    footer.footer { background: #1f2a44; color: white; text-align: center; padding: 20px; font-size: 0.9em; }
+
+    /* Modales */
+    .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
+.modal-content {
+  background: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  width: 60%;
+  max-height: 80vh;       /* limita la altura del modal */
+  border-radius: 8px;
+  text-align: center;
+  overflow-y: auto;       /* habilita scroll vertical */
+}
+
+.modal-content img {
+  display: block;          /* cada imagen en su propia línea */
+  height: 50%;           /* altura fija */
+  width: 50%;             /* ancho automático */
+  margin: 10px auto;       /* centrado y separación */
+}
+    .close { float: right; font-size: 1.5em; cursor: pointer; }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+
+
+      .menu-icon { display: block; font-size: 2em; color: #800020; cursor: pointer; padding: 8px 12px; background: #fff; border-radius: 5px; z-index: 1100; }
+      .menu nav ul { display: none; flex-direction: column; justify-content: space-between; align-items: stretch; background: #FDFDF3; border-top: 2px ; position: absolute; top: 100px; left: 10px; width: 40%; z-index: 1200; padding: 0; margin: 0; }
+      .menu nav ul li { flex: 1; width: 100%; text-align: center; border-bottom: 1px solid #ddd; padding: 15px 0; }
+      .menu nav a { display: block; width: 100%; }
+      #menu-toggle:checked ~ nav ul { display: flex; }
+      #menu-toggle:checked ~ .overlay { display: block; }
+      .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.2); z-index: 1000; }
+
+      /* Contenido apilado */
+      .parent {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .parent > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 0 !important;   /* elimina cualquier margen */
+    padding: 0 !important;  /* opcional, si también quieres quitar padding */
+
+      }
+      .parent img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+      }
+      .parent h3, .parent p {
+        margin: 5px 0;
+      }
+      .parent button {
+        width: 80%;
+        max-width: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="logo">
+    <img src="imgdelindex/logo.jpg" alt="Logo Dreams Builder">
+    <span>DREAMS BUILDER ADIN CORP</span>
+  </div>
+  <div class="menu" style="margin-right: 20px;">
+    <input type="checkbox" id="menu-toggle" />
+    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+    <label for="menu-toggle" class="overlay"></label>
+    <nav>
+      <ul>
+        <li><a href="index-fr.html">Accueil</a></li>
+        <li><a href="nosotros-fr.html">À Propos</a></li>
+        <li><a href="servicos-fr.html">Services</a></li>
+        <li><a href="contactos-fr.html">Contact</a></li>
+        <li>
+          <select class="lang-select-nav" onchange="location = this.value;" style="border: 1px solid #800020; border-radius: 5px; color: #800020; font-weight: bold; background: transparent; padding: 2px 5px; cursor: pointer;">
+              <option value="servicos-fr.html" selected>Français 🇫🇷</option>
+              <option value="servicos.html">Español 🇲🇽</option>
+              <option value="servicos-en.html">English 🇨🇦</option>
+            </select>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <h1>Construction de Qualité et Confiance</h1>
+    <p>Projets commerciaux, de vente au détail et industriels</p>
+  </div>
+
+  <div class="parent">
+    <div class="div1"><img src="imgservicio/en.png" alt="Entrée" style="border-radius: 70%; width: 280px; height: 300px;"></div>
+    <div class="div2">
+      <h3>Entrées</h3>
+      <p>Nous concevons et construisons de belles entrées pour votre cour, coulées et créées selon vos besoins.</p>
+      <button onclick="openModal('modal1')">Voir plus</button>
+      <button onclick="openModal('cotizar')">Devis</button>
+    </div>
+    <div class="div3"><img src="imgservicio/pi.png" alt="Image entrée" style="border-radius: 70%; width: 280px; height: 300px;"></div>
+    <div class="div4">
+      <h3>Porcelaine</h3>
+      <p>Nous installons de la porcelaine (céramique) dans les salons, les chambres, les salles de bain et plus encore.</p>
+      <button onclick="openModal('modal2')">Voir plus</button>
+      <button onclick="openModal('cotizar')">Devis</button>
+    </div>
+    <div class="div5" style="margin-top: 50%;"><img src="imgservicio/car.jpg" alt="Image porcelaine" style="border-radius: 70%; width: 280px; height: 300px;"></div>
+    <div class="div6" style="margin-top: 40%; margin-left: 10%;">
+      <h3>Charpenterie</h3>
+      <p>Nous réalisons des travaux de charpenterie pour des maisons ou des chantiers selon les besoins.</p>
+      <button onclick="openModal('modal3')">Voir plus</button>
+      <button onclick="openModal('cotizar')">Devis</button>
+    </div>
+    <div class="div7" style="margin-top: 60%;"><img src="imgservicio/cib.jpg" alt="Image charpenterie" style="border-radius: 70%; width: 280px; height: 300px;"></div>
+    <div class="div8" style="margin-top: 50%">
+      <h3>Fondations</h3>
+      <p>Nous construisons des fondations et des coffrages, base technique fondamentale pour la stabilité de votre ouvrage.</p>
+      <button onclick="openModal('modal4')">Voir plus</button>
+      <button onclick="openModal('cotizar')">Devis</button>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  © 2026 DREAMS BUILDER ADIN CORP. Tous droits réservés.
+</footer>
+
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal1')">&times;</span>
+    <h3>Entrées</h3>
+    <img src="imgservicio/en.png" alt="Exemple entrée">
+  </div>
+</div>
+
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal2')">&times;</span>
+    <h3>Porcelaine</h3>
+    <img src="imgservicio/pisos/1.png" alt="Exemple porcelaine">
+    <img src="imgservicio/pisos/2.png" alt="Exemple porcelaine">
+    <img src="imgservicio/pisos/3.png" alt="Exemple porcelaine">
+    <img src="imgservicio/pisos/4.png" alt="Exemple porcelaine">
+    <img src="imgservicio/pisos/5.png" alt="Exemple porcelaine">
+  </div>
+</div>
+
+<div id="modal3" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal3')">&times;</span>
+    <h3>Charpenterie</h3>
+    <img src="imgservicio/car.jpg" alt="Exemple charpenterie">
+    <img src="imgservicio/car2.jpg" alt="Exemple charpenterie">
+  </div>
+</div>
+
+<div id="modal4" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal4')">&times;</span>
+    <h3>Fondations</h3>
+    <img src="imgservicio/cimbra/1.jpg" alt="Exemple fondation">
+    <img src="imgservicio/cimbra/2.jpg" alt="Exemple fondation">
+  </div>
+</div>
+
+<div id="cotizar" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('cotizar')">&times;</span>
+    <h3>Obtenir un devis</h3>
+    <form id="cotizarForm">
+      <label>Nom complet :</label>
+      <input type="text" id="nombre" required>
+      <label>Travail à deviser :</label>
+      <input type="text" id="trabajo" required>
+      <button type="submit">Envoyer le message</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function openModal(id){
+  document.getElementById(id).style.display='block';
+}
+function closeModal(id){
+  document.getElementById(id).style.display='none';
+}
+
+document.getElementById('cotizarForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const nombre=document.getElementById('nombre').value;
+  const trabajo=document.getElementById('trabajo').value;
+  const mensaje=`Bonjour, je suis ${nombre}. Je souhaite un devis pour : ${trabajo}`;
+  const encoded="MTQzNzk2NzE0NTc=";
+  const numero=atob(encoded);
+  const url=`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+  window.open(url,'_blank');
+});
+</script>
+
+</body>
+</html>

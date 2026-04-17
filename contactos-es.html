@@ -282,7 +282,6 @@
 </head>
 <body>
 
-  <!-- Barra superior fija -->
   <header class="top-bar">
     <div class="logo">
       <img src="imgdelindex/logo.jpg" alt="Logo Dreams Builder">
@@ -294,23 +293,28 @@
       <label for="menu-toggle" class="overlay"></label>
       <nav>
         <ul>
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="nosotros.html">Nosotros</a></li>
-      <li><a href="servicos.html">Servicios</a></li>
-      <li><a href="contactos.html">Contacto</a></li>
+          <li><a href="index-es.html">Inicio</a></li>
+          <li><a href="nosotros-es.html">Nosotros</a></li>
+          <li><a href="servicos-es.html">Servicios</a></li>
+          <li><a href="contactos-es.html">Contacto</a></li>
+          <li>
+            <select class="lang-select-nav" onchange="location = this.value;" style="border: 1px solid #800020; border-radius: 5px; color: #800020; font-weight: bold; background: transparent; padding: 2px 5px; cursor: pointer;">
+              <option value="contactos-es.html" selected>Español 🇲🇽</option>
+              <option value="contactos-en.html">English 🇨🇦</option>
+              <option value="contactos-fr.html">Français 🇫🇷</option>
+            </select>
+          </li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- Contenedor principal -->
   <main>
     <div class="hero" id="inicio">
       <h1>Construcción de Calidad y Confianza</h1>
       <p>Proyectos comerciales, retail e industriales</p>
     </div>
 
-    <!-- EMPRESA -->
     <section class="empresa" id="nosotros" style="text-align: center; margin-left: 10%;">
       <div class="empresa-texto">
         <h2>DREAMS BUILDER ADIN CORP</h2>
@@ -325,7 +329,6 @@
     </section>
   </main>
 
-  <!-- Footer fijo abajo -->
   <footer class="footer">
     © 2026 DREAMS BUILDER ADIN CORP. Todos los derechos reservados.
   </footer>

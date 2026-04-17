@@ -151,10 +151,17 @@
     <label for="menu-toggle" class="overlay"></label>
     <nav>
       <ul>
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="nosotros.html">Nosotros</a></li>
-      <li><a href="servicos.html">Servicios</a></li>
-      <li><a href="contactos.html">Contacto</a></li>
+        <li><a href="index-es.html">Inicio</a></li>
+        <li><a href="nosotros-es.html">Nosotros</a></li>
+        <li><a href="servicos-es.html">Servicios</a></li>
+        <li><a href="contactos-es.html">Contacto</a></li>
+        <li>
+          <select class="lang-select-nav" onchange="location = this.value;" style="border: 1px solid #800020; border-radius: 5px; color: #800020; font-weight: bold; background: transparent; padding: 2px 5px; cursor: pointer; font-family: 'Montserrat', sans-serif;">
+            <option value="servicos-es.html" selected>Español 🇲🇽</option>
+            <option value="servicos-en.html">English 🇨🇦</option>
+            <option value="servicos-fr.html">Français 🇫🇷</option>
+          </select>
+        </li>
       </ul>
     </nav>
   </div>
@@ -166,10 +173,9 @@
     <p>Proyectos comerciales, retail e industriales</p>
   </div>
 
-  <!-- Contenido -->
   <div class="parent">
-    <div class="div1"><img src="imgservicio/en.png" alt="Entrada bonita" style="border-radius: 70%;  width: 280px; height: 300px;" ></div>
-    <div class="div2" >
+    <div class="div1"><img src="imgservicio/en.png" alt="Entrada bonita" style="border-radius: 70%; width: 280px; height: 300px;"></div>
+    <div class="div2">
       <h3>Entradas</h3>
       <p>Diseñamos y construimos entradas bonitas para tu patio, colamos y creamos a tu forma.</p>
       <button onclick="openModal('modal1')">Ver más</button>
@@ -183,7 +189,7 @@
       <button onclick="openModal('cotizar')">Cotizar</button>
     </div>
     <div class="div5" style="margin-top: 50%;"><img src="imgservicio/car.jpg" alt="Porcelanato imagen" style="border-radius: 70%; width: 280px; height: 300px;"></div>
-    <div class="div6" style="margin-top: 40%;  margin-left: 10%;">
+    <div class="div6" style="margin-top: 40%; margin-left: 10%;">
       <h3>Carpintería</h3>
       <p>Realizamos carpintería para casas u obras según lo requerido.</p>
       <button onclick="openModal('modal3')">Ver más</button>
@@ -199,12 +205,10 @@
   </div>
 </main>
 
-<!-- Footer -->
 <footer class="footer">
   © 2026 DREAMS BUILDER ADIN CORP. Todos los derechos reservados.
 </footer>
 
-<!-- Modales de imágenes -->
 <div id="modal1" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal1')">&times;</span>
@@ -243,7 +247,6 @@
   </div>
 </div>
 
-<!-- Modal de cotización -->
 <div id="cotizar" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('cotizar')">&times;</span>
@@ -271,16 +274,11 @@ document.getElementById('cotizarForm').addEventListener('submit',function(e){
   const nombre=document.getElementById('nombre').value;
   const trabajo=document.getElementById('trabajo').value;
   const mensaje=`Hola, soy ${nombre}. Quiero cotizar: ${trabajo}`;
-  
-  // Número en formato internacional limpio y encriptado en Base64
-  const encoded="MTQzNzk2NzE0NTc=";  // corresponde a "14379671457"
-  const numero=atob(encoded);          // decodifica a "14379671457"
-  
+  const encoded="MTQzNzk2NzE0NTc=";
+  const numero=atob(encoded);
   const url=`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
   window.open(url,'_blank');
 });
-
-
 </script>
 
 </body>

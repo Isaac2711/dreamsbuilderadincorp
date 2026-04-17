@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DREAMS BUILDER ADIN CORP</title>
+  <style>
+ 
+ body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #FDFDF3;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: auto;
+      gap: 8px;
+      padding-top: 100px;
+    }
+
+    /* Barra superior fija */
+    header.top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: #FDFDF3;
+      border-bottom: 2px solid #f57c00;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 15px;
+      z-index: 1000;
+    }
+
+    /* Logo */
+    .logo {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .logo img {
+      height: 80px;
+    }
+
+    .logo span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #800020;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    /* Menú */
+    .menu {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .menu nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 30px;
+    }
+
+    .menu nav a {
+      text-decoration: none;
+      color: #800020;
+      font-weight: 900;
+      font-size: 1em;
+    }
+
+    /* Hero */
+    .hero {
+      grid-column: 1 / -1;
+      background: linear-gradient(
+                    to left,
+                    rgba(255,255,255,0.9),
+                    rgba(255,255,255,0.0)
+                  ),
+                  url("imgdelindex/1.jpg") center/cover no-repeat;
+      color: #800020;
+      padding: 30px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      text-align: center;
+      min-height: 630px;
+    }
+
+    /* Sección Empresa */
+    .empresa {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 60px 40px;
+      box-sizing: border-box;
+    }
+
+    .empresa-texto {
+      flex: 1;
+      color: #333;
+    }
+
+    .empresa-texto h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      color: #800020;
+      margin-bottom: 20px;
+    }
+
+    .empresa-texto p {
+      font-size: 1.5em;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      word-wrap: break-word;   /* Ajusta palabras largas */
+    }
+
+    .empresa-logo {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .empresa-logo img {
+      max-width: 250px;
+      border-radius: 10px;
+    }
+
+    /* Footer */
+    footer.footer {
+      background: #1f2a44;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+    }
+
+    /* Hamburguesa */
+    #menu-toggle {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .menu-icon {
+      display: none;
+    }
+
+    /* --- SOLO EN PANTALLAS PEQUEÑAS --- */
+    @media (max-width: 800px) {
+      main {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        align-items: center;
+      }
+
+      .logo { 
+        justify-content: center;
+        text-align: center;
+      }
+
+      .menu { text-align: center; }
+
+      .menu-icon {
+        display: block;
+        font-size: 2em;
+        color: #800020;
+        cursor: pointer;
+        padding: 8px 12px;
+        background: #fff;
+        border-radius: 5px;
+        z-index: 1100;
+      }
+
+      .menu nav ul {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+        background: #FDFDF3;
+        border-top: 2px solid #f57c00;
+        position: absolute;
+        top: 100px;
+        left: 40px;
+        width: 70%;
+        z-index: 1200;
+        padding: 0;
+        margin: 0;
+      }
+
+      .menu nav ul li {
+        flex: 1;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        padding: 15px 0;
+        box-sizing: border-box;
+      }
+
+      .menu nav a {
+        display: block;
+        width: 100%;
+        color: #800020;
+        font-weight: 900;
+        font-size: 1em;
+        text-decoration: none;
+      }
+
+      #menu-toggle:checked ~ nav ul {
+        display: flex;
+      }
+
+      #menu-toggle:checked ~ .overlay {
+        display: block;
+      }
+
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.2);
+        z-index: 1000;
+      }
+
+      /* Empresa responsiva */
+      .empresa {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+      }
+
+      .empresa-texto h2 {
+        font-size: 2em;   /* Reduce título */
+      }
+
+      .empresa-texto p {
+        font-size: 1em;   /* Texto más pequeño en móvil */
+        line-height: 1.4;
+      }
+
+      .empresa-logo img {
+        max-width: 150px;
+        margin-top: 20px;
+      }
+    }
+
+    /* Pantallas muy pequeñas (<480px) */
+    @media (max-width: 480px) {
+      .empresa-texto h2 {
+        font-size: 1.5em;
+      }
+      .empresa-texto p {
+        font-size: 0.9em;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="logo">
+      <img src="imgdelindex/logo.jpg" alt="Dreams Builder Logo">
+      <span>DREAMS BUILDER ADIN CORP</span>
+    </div>
+    <div class="menu" style="margin-right: 10px;">
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+      <label for="menu-toggle" class="overlay"></label>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="nosotros-en.html">About Us</a></li>
+          <li><a href="servicos-en.html">Services</a></li>
+          <li><a href="contactos-en.html">Contact</a></li>
+          <li>
+            <select class="lang-select-nav" onchange="location = this.value;" style="border: 1px solid #800020; border-radius: 5px; color: #800020; font-weight: bold; background: transparent; padding: 2px 5px; cursor: pointer;">
+              <option value="contactos-en.html" selected>English 🇨🇦</option>
+              <option value="contactos-es.html">Español 🇲🇽</option>
+              <option value="contactos-fr.html">Français 🇫🇷</option>
+            </select>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero" id="inicio">
+      <h1>Quality Construction & Trust</h1>
+      <p>Commercial, Retail, and Industrial Projects</p>
+    </div>
+
+    <section class="empresa" id="nosotros" style="text-align: center; margin-left: 10%;">
+      <div class="empresa-texto">
+        <h2>DREAMS BUILDER ADIN CORP</h2>
+        <p>45 Craydon Ave</p>
+        <p>Toronto, ON M6M 2C8, Canada</p>
+        <p>+1 (437) 967 1457</p>
+        <p>dreams.builder.adin@gmail.com</p>
+      </div>
+      <div class="empresa-logo">
+        <img src="imgdelindex/logo.jpg" alt="Company Logo">
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © 2026 DREAMS BUILDER ADIN CORP. All rights reserved.
+  </footer>
+
+</body>
+</html>
